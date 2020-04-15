@@ -117,7 +117,12 @@ class Day extends Component {
     let rightFillerStyle = {};
     let fillerStyle = {};
     let fillers;
+    const marking = this.props.marking || {};
 
+    
+    if (marking.selected) {
+      containerStyle.push(this.style.selected);
+    } 
     if (this.props.state === 'disabled') {
       textStyle.push(this.style.disabledText);
     } else if (this.props.state === 'today') {
@@ -127,7 +132,7 @@ class Day extends Component {
 
     if (this.props.marking) {
       containerStyle.push({
-        borderRadius: 17
+        borderRadius: 4
       });
 
       const flags = this.markingStyle;
@@ -145,22 +150,22 @@ class Day extends Component {
       }
 
       if (flags.startingDay && !flags.endingDay) {
-        leftFillerStyle = {
+       /* leftFillerStyle = {
           backgroundColor: this.theme.calendarBackground
         };
         rightFillerStyle = {
           backgroundColor: flags.startingDay.color
-        };
+        };*/
         containerStyle.push({
           backgroundColor: flags.startingDay.color
         });
       } else if (flags.endingDay && !flags.startingDay) {
-        rightFillerStyle = {
+       /* rightFillerStyle = {
           backgroundColor: this.theme.calendarBackground
         };
         leftFillerStyle = {
           backgroundColor: flags.endingDay.color
-        };
+        };*/
         containerStyle.push({
           backgroundColor: flags.endingDay.color
         });
@@ -170,12 +175,12 @@ class Day extends Component {
         // #177 bug
         fillerStyle = {backgroundColor: flags.day.color};
       } else if (flags.endingDay && flags.startingDay) {
-        rightFillerStyle = {
+        /*rightFillerStyle = {
           backgroundColor: this.theme.calendarBackground
         };
         leftFillerStyle = {
           backgroundColor: this.theme.calendarBackground
-        };
+        };*/
         containerStyle.push({
           backgroundColor: flags.endingDay.color
         });
@@ -208,6 +213,6 @@ class Day extends Component {
       </TouchableWithoutFeedback>
     );
   }
-}
+  }
 
 export default Day;
