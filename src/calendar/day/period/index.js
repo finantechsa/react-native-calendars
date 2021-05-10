@@ -110,7 +110,7 @@ export default class PeriodDay extends Component {
   }
 
   render() {
-    const {state, marking} = this.props;
+    const {state} = this.props;
     const containerStyle = [this.style.base];
     const textStyle = [this.style.text];
     let leftFillerStyle = {};
